@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Anti-Gravity</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="title-section">
+                <h1>2048</h1>
+                <p class="subtitle">Anti-Gravity</p>
+            </div>
+            <div class="scores-section">
+                <div class="score-card">
+                    <span class="score-label">SCORE</span>
+                    <span class="score-value" id="current-score">0</span>
+                </div>
+                <div class="score-card">
+                    <span class="score-label">BEST</span>
+                    <span class="score-value" id="best-score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="btn btn-outline" id="btn-restart">
+                <span class="material-icons-round">refresh</span> Restart
+            </button>
+            <button class="btn btn-outline" id="btn-undo">
+                <span class="material-icons-round">undo</span> Undo
+            </button>
+        </div>
+
+        <!-- Game Board Container -->
+        <div class="board-container">
+            <div class="grid-background" id="grid-background">
+                <!-- 16 empty cells created dynamically or statically here -->
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+            </div>
+            <!-- Dynamic tiles will be appended here -->
+            <div class="tile-container" id="tile-container"></div>
+        </div>
+
+        <!-- Anti-Gravity Toggle Panel -->
+        <div class="gravity-panel">
+            <div class="toggle-row">
+                <div class="toggle-info">
+                    <h2>Anti-Gravity Mode</h2>
+                    <p>Tiles float in reverse</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="gravity-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <hr class="divider">
+            <div class="mode-description">
+                <span class="material-icons-round">auto_awesome</span>
+                <p id="mode-text">Standard gravity is active. Swipe UP to move UP.</p>
+            </div>
+        </div>
+
+        <!-- Overlays (Hidden by default) -->
+        <div class="overlay hidden" id="game-over-overlay">
+            <div class="overlay-content">
+                <h2>Gravity Reclaimed</h2>
+                <p>No more moves possible</p>
+                <div class="overlay-scores">
+                    <div class="score-display">
+                        <label>FINAL SCORE</label>
+                        <span id="final-score">0</span>
+                    </div>
+                </div>
+                <div class="overlay-actions">
+                    <button class="btn btn-primary" id="btn-try-again">
+                        <span class="material-icons-round">refresh</span> Try Defying Again
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay hidden" id="game-won-overlay">
+            <div class="overlay-content win-content">
+                <div class="badge">GRAVITY DEFIED</div>
+                <h2 class="huge-text">2048</h2>
+                <p>You've Conquered the Void</p>
+                <div class="overlay-actions">
+                    <button class="btn btn-primary" id="btn-keep-playing">Keep Playing</button>
+                    <button class="btn btn-outline" id="btn-replay">Play Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
